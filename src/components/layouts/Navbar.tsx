@@ -14,8 +14,6 @@ import {
   useGetUserInfoQuery,
   useLogoutMutation,
 } from "@/redux/features/auth/authApi";
-import { toast } from "sonner";
-import type { ApiError } from "@/types";
 import { useAppDispatch } from "@/redux/hook";
 import { role } from "@/constant/role";
 import { Skeleton } from "../ui/skeleton";
@@ -33,16 +31,12 @@ const navigationLinks = [
 
 export default function Navbar() {
   const { data, isLoading } = useGetUserInfoQuery(undefined);
+  const [logout] = useLogoutMutation(undefined);
   const dispatch = useAppDispatch();
-  const [logout] = useLogoutMutation();
 
   const handleLogout = async () => {
-    try {
-      await logout(undefined);
-      dispatch(authApi.util.resetApiState());
-    } catch (err) {
-      toast.error((err as ApiError)?.data?.message ?? "Something went wrong");
-    }
+    await logout(undefined).unwrap();
+    dispatch(authApi.util.resetApiState());
   };
 
   return (
@@ -135,7 +129,7 @@ export default function Navbar() {
             <Button
               onClick={handleLogout}
               variant="destructive"
-              className="text-sm"
+              className="text-sm cursor-pointer"
             >
               Log out
             </Button>

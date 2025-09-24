@@ -64,12 +64,13 @@ export const authApi = baseApi.injectEndpoints({
         url: "/auth/login",
         method: "POST",
         data: userInfo,
+        credentials: "include",
       }),
     }),
 
     editProfile: builder.mutation({
       query: (userInfo) => ({
-        url: `/user/update-profile/:${userInfo?._id}`,
+        url: `/user/update-profile/${userInfo?._id}`,
         method: "PATCH",
         data: userInfo,
       }),
@@ -80,8 +81,8 @@ export const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/auth/logout",
         method: "POST",
+        credentials: "include",
       }),
-      invalidatesTags: ["USER"],
     }),
   }),
 });
