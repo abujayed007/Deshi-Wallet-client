@@ -39,7 +39,7 @@ const navigationLinks = [
 export default function Navbar() {
   const { data, isLoading } = useGetUserInfoQuery(undefined);
   const dispatch = useAppDispatch();
-  console.log(data?.data?.data._id);
+
   const [logout] = useLogoutMutation();
 
   const handleLogout = async () => {

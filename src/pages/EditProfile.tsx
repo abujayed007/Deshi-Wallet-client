@@ -112,7 +112,7 @@ export function EditProfile({
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Password placeholder="Enter Password" {...field} />
                   </FormControl>

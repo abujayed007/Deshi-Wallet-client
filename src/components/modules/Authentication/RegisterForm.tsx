@@ -185,7 +185,7 @@ export function RegisterForm() {
                 )}
               />
 
-              <Button type="submit" className="w-full">
+              <Button type="submit" className="w-full cursor-pointer">
                 Register
               </Button>
             </form>

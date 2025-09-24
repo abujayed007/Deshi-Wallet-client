@@ -40,13 +40,13 @@ const Testimonials = () => {
               "What Our Users Say"
             )}
           </h2>
-          <p className="mt-2">
+          <div className="mt-2">
             {isLoading ? (
               <Skeleton className="h-4 w-80 mx-auto" />
             ) : (
               "Hear from people who are already using our platform"
             )}
-          </p>
+          </div>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

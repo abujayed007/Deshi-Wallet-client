@@ -37,8 +37,8 @@ export const authApi = baseApi.injectEndpoints({
       query: () => ({
         url: "/user",
         method: "GET",
+        providesTags: ["USER"],
       }),
-      providesTags: ["USER"],
     }),
 
     changeStatus: builder.mutation({
