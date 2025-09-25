@@ -1,4 +1,4 @@
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { useForm } from "react-hook-form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -15,6 +15,7 @@ import {
   useGetSingleUserQuery,
 } from "@/redux/features/auth/authApi";
 import { useEffect } from "react";
+import { toast } from "sonner";
 
 type FormValues = {
   status: string;
@@ -24,6 +25,7 @@ const SingleUser = () => {
   const { id } = useParams<{ id: string }>();
   const [changeStatus] = useChangeStatusMutation();
   const { data: userResponse } = useGetSingleUserQuery(id as string);
+  const navigate = useNavigate();
   const user = userResponse?.data;
 
   const form = useForm<FormValues>({
@@ -40,15 +42,16 @@ const SingleUser = () => {
 
   const handleChangeStatus = async (data: FormValues) => {
     if (!data.status) return;
-    console.log(data);
     const info = {
       id: user?._id,
       status: data!.status as string,
     };
-    console.log(info);
     try {
       const res = await changeStatus(info).unwrap();
-      console.log("Status updated:", res);
+      if (res.success) {
+        toast.success("Status Updated");
+        navigate("/admin");
+      }
     } catch (err) {
       console.error("Failed to update status:", err);
     }

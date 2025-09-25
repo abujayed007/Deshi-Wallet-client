@@ -22,7 +22,6 @@ export interface IWithdrawMoney {
 const Withdraw = () => {
   const { data: userInfo } = useGetUserInfoQuery(undefined);
   const [withdraw] = useWithdrawMoneyMutation();
-  console.log(userInfo?.data?.data);
 
   const form = useForm<IWithdrawMoney>({
     defaultValues: {
@@ -46,7 +45,6 @@ const Withdraw = () => {
       }
     } catch (err) {
       toast.error((err as ApiError)?.data?.message ?? "Something went wrong");
-      console.log(err);
     }
   };
 

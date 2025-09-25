@@ -42,7 +42,7 @@ export function EditProfile({
   const [updateProfile] = useEditProfileMutation();
   const { data: userInfo } = useGetUserInfoQuery(undefined);
   const user = userInfo?.data?.data;
-  console.log(user);
+
   const form = useForm<IEditProfile>({
     defaultValues: {
       name: user?.name,

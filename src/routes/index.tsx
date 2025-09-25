@@ -11,7 +11,7 @@
 // import { agentSidebarItems } from "./agentSidebarItems";
 
 import { lazy } from "react";
-import { createBrowserRouter, Navigate } from "react-router";
+import { createBrowserRouter } from "react-router";
 
 import { adminSidebarItems } from "./adminSidebarItems";
 import { userSidebarItems } from "./userSidebarItems";
@@ -28,6 +28,8 @@ import { About } from "@/components/modules/About/About";
 import HomePage from "@/components/modules/HomePage/HomePage";
 import Testimonials from "@/components/modules/HomePage/Testmonial";
 import SingleUser from "@/components/modules/User/SingleUser";
+import TransactionHistory from "@/pages/TransactionHistory";
+import GetAllTransactions from "@/pages/Admin/GetAllTransactions";
 
 const App = lazy(() => import("@/App"));
 const DashboardLayout = lazy(
@@ -69,24 +71,24 @@ export const router = createBrowserRouter([
     Component: withAuth(DashboardLayout, role.user as TRole),
     path: "/user",
     children: [
-      { index: true, element: <Navigate to="/user/transactions" /> },
       ...generateRoutes(userSidebarItems),
+      { index: true, Component: TransactionHistory },
     ],
   },
   {
     Component: withAuth(DashboardLayout, role.agent as TRole),
     path: "/agent",
     children: [
-      { index: true, element: <Navigate to="/agent/transactions" /> },
       ...generateRoutes(agentSidebarItems),
+      { index: true, Component: TransactionHistory },
     ],
   },
   {
     Component: withAuth(DashboardLayout, role.admin as TRole),
     path: "/admin",
     children: [
-      { index: true, element: <Navigate to="/admin/users" /> },
       ...generateRoutes(adminSidebarItems),
+      { index: true, Component: GetAllTransactions },
       {
         Component: SingleUser,
         path: "/admin/user/:id",

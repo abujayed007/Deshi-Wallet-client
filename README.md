@@ -146,7 +146,7 @@ cd Deshi-Wallet-client
 
 # Install client dependencies
 cd Deshi-Wallet-client
-npm install
+bun install
 
 # Install server dependencies
 git clone https://github.com/abujayed007/Assignment-5

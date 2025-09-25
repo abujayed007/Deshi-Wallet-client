@@ -65,6 +65,7 @@ export const authApi = baseApi.injectEndpoints({
         method: "POST",
         data: userInfo,
         credentials: "include",
+        providesTags: ["USER"],
       }),
     }),
 

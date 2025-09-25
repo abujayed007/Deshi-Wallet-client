@@ -43,7 +43,6 @@ const AddMoney = () => {
         toast.success("Add money successful");
         form.reset();
       }
-      console.log(res);
     } catch (err) {
       toast.error((err as ApiError)?.data?.message ?? "Something went wrong");
     }

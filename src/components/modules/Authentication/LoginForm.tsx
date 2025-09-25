@@ -30,7 +30,6 @@ const LoginForm = () => {
         navigate("/");
       }
     } catch (err) {
-      console.log(err);
       toast.error((err as ApiError)?.data?.message ?? "Something went wrong");
     }
   };

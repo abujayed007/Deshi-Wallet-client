@@ -30,7 +30,6 @@ const GetAllTransactions = () => {
   });
 
   const totalPage = transactions?.data?.meta.totalPage || 1;
-  console.log(totalPage);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-purple-100 dark:from-gray-900 dark:via-gray-950 dark:to-gray-900 p-6 md:p-12">
